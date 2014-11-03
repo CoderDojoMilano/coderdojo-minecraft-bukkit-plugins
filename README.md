@@ -1,4 +1,4 @@
-bukkit-hello-world
+bukkit-plugin-showcase
 ==================
 
 Empty plugin for Minecraft server built on Bukkit API.
