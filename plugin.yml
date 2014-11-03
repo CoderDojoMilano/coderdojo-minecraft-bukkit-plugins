@@ -1,0 +1,12 @@
+name: bukkit showcase
+
+author: Toto Castaldi
+website: https://github.com/toto-castaldi/bukkit-plugin-showcase
+main: helloworld.HelloWorld
+
+commands:
+    hello:
+        description: Say Hello to everyone!
+        usage: /hello
+
+version: 0.1

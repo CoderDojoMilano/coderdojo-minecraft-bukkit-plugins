@@ -1,0 +1,62 @@
+defaultTasks 'clean', 'build'
+
+apply plugin: 'java' 
+apply plugin: 'project-report' 
+
+// Methods to determine detailed version string
+def gitDescribe() {
+    try {
+        // determine git-describe output
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--always', '--dirty=*'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    } catch (e) {
+        return "unknown"
+    }
+}
+def getVersionName() {
+    try {
+        // determine git-describe output
+        def version = gitDescribe()
+
+        // add on jenkins or travis build information
+        def jenkins_build = System.getenv("BUILD_NUMBER")
+        def travis_build = System.getenv("TRAVIS_BUILD_NUMBER")
+        if (jenkins_build != null) {
+            version += "-b" + jenkins_build
+        } else if (travis_build != null) {
+            version += "-trv" + travis_build
+        } else {
+            version += "-dev"
+        }
+
+        return version
+    } catch (e) {
+        return "unknown-version"
+    }
+}
+
+group = 'it.toto.bukkit-hello-world'
+version = '0.0.1-SNAPSHOT'
+description = "Bukkit Hello World Plugin"
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.bukkit.org/content/groups/public/" }
+    maven { url "https://oss.sonatype.org/content/repositories/public/" }
+}
+
+dependencies {
+    compile group: 'org.bukkit', name: 'bukkit', version: '1.7.9-R0.1'
+}
