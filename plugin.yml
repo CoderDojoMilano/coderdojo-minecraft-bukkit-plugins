@@ -2,7 +2,7 @@ name: bukkit showcase
 
 author: Toto Castaldi
 website: https://github.com/toto-castaldi/bukkit-plugin-showcase
-main: helloworld.HelloWorld
+main: it.toto.minecraft.plugin.ShowCase
 
 commands:
     hello:
