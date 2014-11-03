@@ -12,19 +12,28 @@ public class ShowCase extends JavaPlugin {
     public static Logger log = Logger.getLogger("Minecraft");
 
     public void onLoad() {
-        log.info("[HelloWorld] ");
+        log.info("[ShowCase] LOAD ");
     }
 
     public void onEnable() {
-        log.info("[HelloWorld] ");
+        log.info("[ShowCase] ENABLE ");
     }
 
     public void onDisable() {
-        log.info("[HelloWorld] ");
+        log.info("[ShowCase] DISABLE ");
     }
 
-    public boolean onCommand(CommandSender sender, Command command,
-                             String commandLabel, String[] args) {
+    public boolean onCommand(
+            CommandSender sender,
+            Command command,
+            String commandLabel,
+            String[] args
+    ) {
+        log.fine("sender " + sender);
+        log.fine("command " + command);
+        log.fine("commandLabel " + commandLabel);
+        log.fine("args " + args);
+
         if (commandLabel.equalsIgnoreCase("hello")) {
             String msg = "[Server] ";
             getServer().broadcastMessage(msg);
