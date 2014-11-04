@@ -30,8 +30,8 @@ public class ShowCase extends JavaPlugin {
             String commandLabel,
             String[] args
     ) {
-        log.info("sender {}", sender);
-        DebugLog.of(log).debug("command {}", command);
+        log.info("sender {}", sender); //GlowPlayer vs net.glowstone.ConsoleManager$ColoredCommandSender
+        DebugLog.of(log).debug("command {}", command); //org.bukkit.command.PluginCommand
         DebugLog.of(log).debug("commandLabel {}", commandLabel);
         DebugLog.of(log).debug("args {}", args);
 
