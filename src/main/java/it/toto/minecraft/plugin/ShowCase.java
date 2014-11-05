@@ -2,6 +2,10 @@ package it.toto.minecraft.plugin;
 
 
 import com.google.common.base.CaseFormat;
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.name.Names;
 import it.toto.minecraft.plugin.command.BuildACube;
 import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +18,19 @@ import org.slf4j.LoggerFactory;
 @Slf4j
 public class ShowCase extends JavaPlugin {
 
+    private Injector injector;
+
     public void onLoad() {
+
         log.info("[ShowCase] LOAD ");
+
+        injector = Guice.createInjector(new AbstractModule() {
+            @Override
+            protected void configure() {
+                bind(String.class).annotatedWith(Names.named("aString")).toInstance("AAAAAA");
+            }
+        });
+
     }
 
     public void onEnable() {
@@ -47,7 +62,7 @@ public class ShowCase extends JavaPlugin {
         CommandExecution commandExecution = null;
 
         try {
-            commandExecution = (CommandExecution) Class.forName(commandClassName).newInstance();
+            commandExecution = (CommandExecution) injector.getInstance(Class.<CommandExecution>forName(commandClassName));
         } catch (Exception e) {
             log.error("can't build command execution class ",e);
         }

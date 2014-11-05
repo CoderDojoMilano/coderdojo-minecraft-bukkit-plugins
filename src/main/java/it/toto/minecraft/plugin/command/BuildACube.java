@@ -1,7 +1,10 @@
 package it.toto.minecraft.plugin.command;
 
 import com.google.common.collect.Iterables;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import it.toto.minecraft.plugin.CommandExecution;
+import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Location;
@@ -19,7 +22,11 @@ public class BuildACube implements CommandExecution {
 
 
     Location origin = null;
-    boolean firstHouse = true;
+
+    @Inject
+    public BuildACube(@Named("aString") String aString) {
+        DebugLog.of(log).debug("aString {}", aString);
+    }
 
     // Create a 3D cube, offset from the saved "origin"
     void makeCube(int offsetX, int offsetY, int offsetZ, int width, int height, Material what) {
@@ -52,39 +59,15 @@ public class BuildACube implements CommandExecution {
             height = 5;
         }
 
-        if (firstHouse) {
-            // Center the first house on the player
-            origin.setY(origin.getY() - 1);
-            origin.setZ(origin.getZ() - (width/2));
-            origin.setX(origin.getX() - (width/2));
-            firstHouse = false;
-        }
+        // Center the first house on the player
+        origin.setY(origin.getY() - 1);
+        origin.setZ(origin.getZ() - (width/2));
+        origin.setX(origin.getX() - (width/2));
 
         // Set the whole area to wood
         makeCube(0,0,0,width, height, Material.WOOD);
         // Set the inside of the cube to air
         makeCube(1,1,1,width-2, height-2, Material.AIR);
-
-        // Pop a door in one wall
-        Location door = new Location(origin.getWorld(),
-                origin.getX()+(width/2), origin.getY(), origin.getZ());
-
-        // The door is two high, with a torch over the door
-        door.setY(door.getY() +1);
-        Block bottom = origin.getWorld().getBlockAt(door);
-        door.setY(door.getY() +1);
-        Block top = origin.getWorld().getBlockAt(door);
-        door.setY(door.getY() +1);
-        door.setZ(door.getZ() +1);
-        Block over = origin.getWorld().getBlockAt(door);
-
-        // Magic values to establish top and bottom of door
-        top.setData((byte)0x8);
-        bottom.setData((byte)0x4);
-        // And normal material constants
-        top.setType(Material.WOODEN_DOOR);
-        bottom.setType(Material.WOODEN_DOOR);
-        over.setType(Material.TORCH);
 
         // Move over to make next house if called in a loop.
         origin.setX(origin.getX() + width);
@@ -96,7 +79,6 @@ public class BuildACube implements CommandExecution {
             Player me = (Player) sender;
             // Put your code after this line:
             origin = me.getLocation();
-            firstHouse = true;
 
             int width = 6;
             int height = 6;
