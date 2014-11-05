@@ -5,8 +5,8 @@ website: https://github.com/toto-castaldi/bukkit-plugin-showcase
 main: it.toto.minecraft.plugin.ShowCase
 
 commands:
-    hello:
-        description: Say Hello to everyone!
-        usage: /hello
+    build-a-cube:
+        description: Build a Cube
+        usage: /build-a-cube width height
 
 version: 0.1
