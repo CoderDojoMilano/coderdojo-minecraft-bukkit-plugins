@@ -8,5 +8,8 @@ commands:
     build-a-cube:
         description: Build a Cube
         usage: /build-a-cube width height
+    play-a-sound:
+        description: Play a Sound
+        usage: /play-a-sound
 
 version: 0.1
