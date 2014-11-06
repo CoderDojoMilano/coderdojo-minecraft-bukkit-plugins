@@ -8,5 +8,5 @@ import org.bukkit.command.CommandSender;
  */
 public interface CommandExecution {
 
-    boolean go(CommandSender sender, Command command, String[] args);
+    boolean go(CommandSender sender, Command command, Iterable<String> args);
 }

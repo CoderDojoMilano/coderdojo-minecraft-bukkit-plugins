@@ -74,7 +74,7 @@ public class BuildACube implements CommandExecution {
     }
 
     @Override
-    public boolean go(CommandSender sender, Command command, String[] args) {
+    public boolean go(CommandSender sender, Command command, Iterable<String> args) {
         if (sender instanceof Player) {
             Player me = (Player) sender;
             // Put your code after this line:
@@ -82,9 +82,13 @@ public class BuildACube implements CommandExecution {
 
             int width = 6;
             int height = 6;
-            if (args.length > 1 && NumberUtils.isDigits(args[0]) && NumberUtils.isDigits(args[1])) {
-                width = Integer.valueOf(args[0]);
-                height = Integer.valueOf(args[1]);
+
+            if (    Iterables.size(args) > 1 &&
+                    NumberUtils.isDigits(Iterables.get(args, 0)) &&
+                    NumberUtils.isDigits(Iterables.get(args, 1))
+                    ) {
+                width = Integer.valueOf(Iterables.get(args, 0));
+                height = Integer.valueOf(Iterables.get(args, 1));
             }
 
             buildMyHouse(width, height);

@@ -10,6 +10,6 @@ commands:
         usage: /build-a-cube width height
     play-a-sound:
         description: Play a Sound
-        usage: /play-a-sound
+        usage: /play-a-sound soundName
 
 version: 0.1

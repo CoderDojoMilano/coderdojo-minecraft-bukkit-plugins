@@ -7,18 +7,22 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 import it.toto.minecraft.plugin.command.BuildACube;
+import it.toto.minecraft.plugin.tabComplete.PlayASound;
 import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 public class ShowCase extends JavaPlugin {
 
     private Injector injector;
+    private DebugLog debugLog;
 
     public void onLoad() {
 
@@ -31,6 +35,7 @@ public class ShowCase extends JavaPlugin {
             }
         });
 
+        debugLog = DebugLog.of(log);
     }
 
     public void onEnable() {
@@ -48,30 +53,48 @@ public class ShowCase extends JavaPlugin {
             String commandLabel,
             String[] args
     ) {
-        final DebugLog debugLog = DebugLog.of(log);
-
         debugLog.debug("sender {}", sender); //GlowPlayer vs net.glowstone.ConsoleManager$ColoredCommandSender
         debugLog.debug("command {}", command); //org.bukkit.command.PluginCommand
         debugLog.debug("commandLabel {}", commandLabel);
         debugLog.debug("args {}", args);
 
-        final String commandClassName = BuildACube.class.getPackage().getName() + "." + CaseFormat.LOWER_HYPHEN.to(CaseFormat.UPPER_CAMEL, commandLabel);
+        final Optional<CommandExecution> commandExecutionOpt = instanceFromCommandLabel(commandLabel, BuildACube.class.getPackage());
 
-        log.info("execute command with class name {}", commandClassName);
+        if (commandExecutionOpt.isPresent()) {
+            return commandExecutionOpt.get().go(sender, command, Arrays.asList(args));
+        } else {
+            return false;
+        }
+    }
 
-        CommandExecution commandExecution = null;
+    @Override
+    public List<String> onTabComplete(
+            CommandSender sender,
+            Command command,
+            String alias,
+            String[] args) {
+
+        final Optional<OnTabComplete> onTabCompleteOptional = instanceFromCommandLabel(alias, PlayASound.class.getPackage());
+
+        if (onTabCompleteOptional.isPresent()) {
+            return onTabCompleteOptional.get().go(sender, command, Arrays.asList(args));
+        } else {
+            return super.onTabComplete(sender ,command, alias, args);
+        }
+
+    }
+
+    private <T> Optional<T> instanceFromCommandLabel(String commandLabel, Package p) {
+        String className = p.getName() + "." + CaseFormat.LOWER_HYPHEN.to(CaseFormat.UPPER_CAMEL, commandLabel);
+        T commandInstance = null;
 
         try {
-            commandExecution = (CommandExecution) injector.getInstance(Class.<CommandExecution>forName(commandClassName));
+            commandInstance = (T) injector.getInstance(Class.<T>forName(className));
         } catch (Exception e) {
             log.error("can't build command execution class ",e);
         }
 
-        if (commandExecution != null) {
-            return commandExecution.go(sender, command, args);
-        } else {
-            return false;
-        }
+        return Optional.ofNullable(commandInstance);
     }
 }
 
