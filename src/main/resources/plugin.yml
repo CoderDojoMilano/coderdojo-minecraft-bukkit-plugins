@@ -15,5 +15,7 @@ commands:
     #name-cow:
     #        description: Creates a Cow and Give it a name
     #        usage: /name-cow name
-    
+    who-am-i:
+        description: Player info
+        usage: /who-am-i
 version: 0.1

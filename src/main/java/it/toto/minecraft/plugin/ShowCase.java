@@ -55,8 +55,6 @@ public class ShowCase extends JavaPlugin {
     ) {
         debugLog.debug("sender {}", sender); //GlowPlayer vs net.glowstone.ConsoleManager$ColoredCommandSender
         debugLog.debug("command {}", command); //org.bukkit.command.PluginCommand
-        debugLog.debug("commandLabel {}", commandLabel);
-        debugLog.debug("args {}", args);
 
         final Optional<CommandExecution> commandExecutionOpt = instanceFromCommandLabel(commandLabel, BuildACube.class.getPackage());
 
