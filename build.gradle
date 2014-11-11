@@ -21,8 +21,9 @@ repositories {
     maven { url "https://oss.sonatype.org/content/repositories/public/" }
 }
 
+// This server is running CraftBukkit version git-Bukkit-1.7.9-R0.2-24-g07d4558-b3116jnks (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
 dependencies {
-    compile 'org.bukkit:bukkit:1.7.9-R0.1'
+    compile 'org.bukkit:bukkit:1.7.9-R0.2'
     compile 'org.projectlombok:lombok:1.14.8'
     compile 'org.slf4j:slf4j-api:1.7.7'
     compile 'com.google.guava:guava:18.0'

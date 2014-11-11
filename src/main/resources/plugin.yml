@@ -12,9 +12,9 @@ commands:
         description: Play a Sound
         usage: /play-a-sound soundName
     #NOT SUPPORTED IN GLOWSTONE 1.8
-    #name-cow:
-    #        description: Creates a Cow and Give it a name
-    #        usage: /name-cow name
+    name-cow:
+            description: Creates a Cow and Give it a name
+            usage: /name-cow name
     who-am-i:
         description: Player info
         usage: /who-am-i
