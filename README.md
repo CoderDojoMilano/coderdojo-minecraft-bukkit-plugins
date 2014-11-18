@@ -1,4 +1,4 @@
-bukkit-plugin-showcase
+coderdojo-minecraft-bukkit-plugins
 ==================
 
 Empty plugin for Minecraft server built on Bukkit API.
