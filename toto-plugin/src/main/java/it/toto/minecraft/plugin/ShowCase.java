@@ -2,6 +2,7 @@ package it.toto.minecraft.plugin;
 
 
 import com.google.common.base.CaseFormat;
+import com.google.common.base.Optional;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -16,7 +17,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 public class ShowCase extends JavaPlugin {
@@ -92,7 +92,7 @@ public class ShowCase extends JavaPlugin {
             log.error("can't build command execution class ",e);
         }
 
-        return Optional.ofNullable(commandInstance);
+        return Optional.fromNullable(commandInstance);
     }
 }
 

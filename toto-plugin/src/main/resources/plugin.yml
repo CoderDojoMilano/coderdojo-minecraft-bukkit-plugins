@@ -1,7 +1,7 @@
-name: Bukkit Showcase
+name: toto
 
 author: Toto Castaldi
-website: https://github.com/toto-castaldi/bukkit-plugin-showcase
+website: https://github.com/toto-castaldi
 main: it.toto.minecraft.plugin.ShowCase
 
 commands:
