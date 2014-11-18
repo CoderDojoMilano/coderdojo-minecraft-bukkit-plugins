@@ -32,7 +32,7 @@ dependencies {
 
 task fatJar(type: Jar) {
     exclude 'org/bukkit/**'
-    baseName = project.name + '-all'
+    baseName = project.name + '-bukkit-plugin'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }

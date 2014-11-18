@@ -2,11 +2,8 @@ package it.toto.minecraft.plugin.command;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
-import it.toto.minecraft.plugin.CommandExecution;
 import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Cow;

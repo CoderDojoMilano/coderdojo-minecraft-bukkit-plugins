@@ -7,8 +7,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
-import it.toto.minecraft.plugin.command.BuildACube;
-import it.toto.minecraft.plugin.tabComplete.PlayASound;
+import it.toto.minecraft.plugin.command.CommandExecution;
+import it.toto.minecraft.plugin.tabComplete.OnTabComplete;
 import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
 import org.bukkit.command.Command;
@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-public class ShowCase extends JavaPlugin {
+public class CoderDojoPlugin extends JavaPlugin {
 
     private Injector injector;
     private DebugLog debugLog;
@@ -56,7 +56,7 @@ public class ShowCase extends JavaPlugin {
         debugLog.debug("sender {}", sender); //GlowPlayer vs net.glowstone.ConsoleManager$ColoredCommandSender
         debugLog.debug("command {}", command); //org.bukkit.command.PluginCommand
 
-        final Optional<CommandExecution> commandExecutionOpt = instanceFromCommandLabel(commandLabel, BuildACube.class.getPackage());
+        final Optional<CommandExecution> commandExecutionOpt = instanceFromCommandLabel(commandLabel, CommandExecution.class.getPackage());
 
         if (commandExecutionOpt.isPresent()) {
             return commandExecutionOpt.get().go(sender, command, Arrays.asList(args));
@@ -72,7 +72,7 @@ public class ShowCase extends JavaPlugin {
             String alias,
             String[] args) {
 
-        final Optional<OnTabComplete> onTabCompleteOptional = instanceFromCommandLabel(alias, PlayASound.class.getPackage());
+        final Optional<OnTabComplete> onTabCompleteOptional = instanceFromCommandLabel(alias, OnTabComplete.class.getPackage());
 
         if (onTabCompleteOptional.isPresent()) {
             return onTabCompleteOptional.get().go(sender, command, Arrays.asList(args));

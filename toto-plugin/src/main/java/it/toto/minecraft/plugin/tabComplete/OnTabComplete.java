@@ -1,4 +1,4 @@
-package it.toto.minecraft.plugin;
+package it.toto.minecraft.plugin.tabComplete;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

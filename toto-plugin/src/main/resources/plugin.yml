@@ -2,7 +2,7 @@ name: toto
 
 author: Toto Castaldi
 website: https://github.com/toto-castaldi
-main: it.toto.minecraft.plugin.ShowCase
+main: it.toto.minecraft.plugin.CoderDojoPlugin
 
 commands:
     build-a-cube:

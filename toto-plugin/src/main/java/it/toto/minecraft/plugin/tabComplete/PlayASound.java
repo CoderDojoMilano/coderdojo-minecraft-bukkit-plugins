@@ -2,7 +2,6 @@ package it.toto.minecraft.plugin.tabComplete;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import it.toto.minecraft.plugin.OnTabComplete;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
