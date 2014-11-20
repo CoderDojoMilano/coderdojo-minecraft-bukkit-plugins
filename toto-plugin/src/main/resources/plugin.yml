@@ -18,4 +18,7 @@ commands:
     who-am-i:
         description: Player info
         usage: /who-am-i
+    lava-vision:
+        description: Turn block near me into LAVA
+        usage: /lava-vision
 version: 0.1
