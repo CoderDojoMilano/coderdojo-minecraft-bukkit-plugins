@@ -1,0 +1,11 @@
+name: gerard
+
+author: Gerard
+website:
+main: it.gerard.minecraft.plugin.CoderDojoPlugin
+
+commands:
+    gerard-hello-world:
+        description: Say HELLO !
+        usage: /gerard-hello-world
+version: 0.1
