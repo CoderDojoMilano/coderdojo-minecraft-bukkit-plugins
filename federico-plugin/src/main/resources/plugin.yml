@@ -1,0 +1,11 @@
+name: federico
+
+author: Federico
+website:
+main: it.federico.minecraft.plugin.CoderDojoPlugin
+
+commands:
+    federico-hello-world:
+        description: Say HELLO !
+        usage: /federico-hello-world
+version: 0.1
