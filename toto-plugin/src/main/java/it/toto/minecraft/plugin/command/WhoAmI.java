@@ -26,9 +26,10 @@ public class WhoAmI implements CommandExecution {
 
     @Override
     public boolean go(CommandSender sender, Command command, Iterable<String> args) {
+        sender.getServer().broadcastMessage("Modificato !!");
         if (sender instanceof Player) {
             Player me = (Player)sender;
-            me.sendMessage(String.format("Your list name is %s", me.getPlayerListName()));
+            me.sendMessage(String.format("Hello . Your list name is %s", me.getPlayerListName()));
             me.sendMessage(String.format("Your location is %s", me.getLocation()));
 
             me.getLocation();
