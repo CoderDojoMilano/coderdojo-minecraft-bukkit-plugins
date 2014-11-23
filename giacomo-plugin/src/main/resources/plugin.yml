@@ -1,0 +1,11 @@
+name: giacomo
+
+author: Toto Castaldi
+website: https://github.com/giacomo-castaldi
+main: it.giacomo.minecraft.plugin.CoderDojoPlugin
+
+commands:
+    giacomo-hello-world:
+        description: Say HELLO !
+        usage: /giacomo-hello-world
+version: 0.1
