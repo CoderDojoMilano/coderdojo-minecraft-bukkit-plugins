@@ -21,4 +21,7 @@ commands:
     lava-vision:
         description: Turn block near me into LAVA
         usage: /lava-vision
+    flying-creeper:
+        description: Spawn a Flying Creeper
+        usage: /flying-creeper
 version: 0.1
