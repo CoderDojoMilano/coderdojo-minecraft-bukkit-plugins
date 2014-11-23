@@ -1,0 +1,8 @@
+name: giampiero
+
+author: Giampiero
+website:
+main: it.giampiero.minecraft.plugin.CoderDojoPlugin
+
+commands:
+version: 0.1

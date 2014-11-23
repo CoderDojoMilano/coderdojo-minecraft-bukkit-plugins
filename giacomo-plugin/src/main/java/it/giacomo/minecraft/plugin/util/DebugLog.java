@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 
 /**
- * Created by giacomo on 04/11/14.
+ * Created by giampiero on 04/11/14.
  */
 @RequiredArgsConstructor (staticName = "of")
 public class DebugLog {

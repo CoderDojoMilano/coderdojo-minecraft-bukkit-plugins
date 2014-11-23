@@ -6,7 +6,6 @@ import com.google.common.base.Optional;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.name.Names;
 import it.giacomo.minecraft.plugin.command.CommandExecution;
 import it.giacomo.minecraft.plugin.tabComplete.OnTabComplete;
 import it.giacomo.minecraft.plugin.util.DebugLog;
