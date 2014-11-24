@@ -7,5 +7,5 @@ cd /home/ubuntu/coderdojo-minecraft-bukkit-plugins
 git pull
 /home/ubuntu/crafbukkit/server.sh stop
 ./build-and-deploy-plugins.sh /home/ubuntu/crafbukkit
-/home/ubuntu/crafbukkit/server.sh sv
+/home/ubuntu/crafbukkit/server.sh start
 

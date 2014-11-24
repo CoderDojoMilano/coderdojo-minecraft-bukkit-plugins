@@ -1,6 +1,8 @@
 #!/bin/sh
 
-LOCATION=$(dirname "$(readlink -fn "$0")")  
+#LOCATION=$(dirname "$(readlink -fn "$0")")  
+LOCATION=$(dirname "$0")
+
 cd "$LOCATION"  
 
 mkdir -p logs
