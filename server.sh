@@ -1,7 +1,8 @@
 #!/bin/sh
 
 #LOCATION=$(dirname "$(readlink -fn "$0")")  
-LOCATION=$(dirname "$0")
+#LOCATION=$(dirname "$0")
+LOCATION=$HOME/coderdojo-minecraft-bukkit-plugins
 
 cd "$LOCATION"  
 
