@@ -1,8 +1,6 @@
 package it.toto.minecraft.plugin.command;
 
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
-import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -15,13 +13,6 @@ import org.bukkit.entity.Player;
 @Slf4j
 public class NameCow implements CommandExecution {
 
-
-    private final DebugLog debugLog;
-
-    @Inject
-    public NameCow() {
-        debugLog = DebugLog.of(log);
-    }
 
     @Override
     public boolean go(CommandSender sender, Command command, Iterable<String> args) {

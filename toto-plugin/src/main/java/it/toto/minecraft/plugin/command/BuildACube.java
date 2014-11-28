@@ -3,7 +3,6 @@ package it.toto.minecraft.plugin.command;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Location;
@@ -23,7 +22,7 @@ public class BuildACube implements CommandExecution {
 
     @Inject
     public BuildACube(@Named("aString") String aString) {
-        DebugLog.of(log).debug("aString {}", aString);
+        log.debug("aString {}", aString);
     }
 
     // Create a 3D cube, offset from the saved "origin"

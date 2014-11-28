@@ -1,8 +1,6 @@
 package it.toto.minecraft.plugin.command;
 
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
-import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -15,15 +13,8 @@ import org.bukkit.entity.Player;
 @Slf4j
 public class PlayASound implements CommandExecution {
 
-
-    private final DebugLog debugLog;
     private float volume = 0.1f;
     private float pitch = 1.0f;
-
-    @Inject
-    public PlayASound() {
-        debugLog = DebugLog.of(log);
-    }
 
     @Override
     public boolean go(CommandSender sender, Command command, Iterable<String> args) {

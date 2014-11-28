@@ -8,8 +8,8 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 import it.toto.minecraft.plugin.command.CommandExecution;
+import it.toto.minecraft.plugin.listener.BlockPlaceMiniGame;
 import it.toto.minecraft.plugin.tabComplete.OnTabComplete;
-import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -22,7 +22,6 @@ import java.util.List;
 public class CoderDojoPlugin extends JavaPlugin {
 
     private Injector injector;
-    private DebugLog debugLog;
 
     public void onLoad() {
 
@@ -34,13 +33,11 @@ public class CoderDojoPlugin extends JavaPlugin {
                 bind(String.class).annotatedWith(Names.named("aString")).toInstance("AAAAAA");
             }
         });
-
-        debugLog = DebugLog.of(log);
     }
 
     public void onEnable() {
-
-        log.info("[ShowCase] ENABLE ");
+        getServer().getPluginManager().registerEvents(injector.getInstance(BlockPlaceMiniGame.class), this);
+        log.info("listener on events ");
     }
 
     public void onDisable() {
@@ -53,8 +50,8 @@ public class CoderDojoPlugin extends JavaPlugin {
             String commandLabel,
             String[] args
     ) {
-        debugLog.debug("sender {}", sender); //GlowPlayer vs net.glowstone.ConsoleManager$ColoredCommandSender
-        debugLog.debug("command {}", command); //org.bukkit.command.PluginCommand
+        log.debug("sender {}", sender); //GlowPlayer vs net.glowstone.ConsoleManager$ColoredCommandSender
+        log.debug("command {}", command); //org.bukkit.command.PluginCommand
 
         final Optional<CommandExecution> commandExecutionOpt = instanceFromCommandLabel(commandLabel, CommandExecution.class.getPackage());
 

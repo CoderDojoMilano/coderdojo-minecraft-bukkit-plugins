@@ -1,19 +1,12 @@
 package it.toto.minecraft.plugin.command;
 
-import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
-import com.google.inject.name.Named;
-import it.toto.minecraft.plugin.util.DebugLog;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Effect;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;
 import org.bukkit.util.BlockIterator;
 
@@ -22,14 +15,6 @@ import org.bukkit.util.BlockIterator;
  */
 @Slf4j
 public class LavaVision implements CommandExecution {
-
-
-    private final DebugLog debugLog;
-
-    @Inject
-    public LavaVision() {
-        debugLog = DebugLog.of(log);
-    }
 
     @Override
     public boolean go(CommandSender sender, Command command, Iterable<String> args) {
