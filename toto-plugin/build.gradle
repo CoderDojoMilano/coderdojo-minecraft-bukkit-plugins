@@ -1,5 +1,7 @@
 defaultTasks 'clean', 'build', 'fatJar'
 
+//prova
+
 apply plugin: 'java' 
 apply plugin: 'project-report' 
 
