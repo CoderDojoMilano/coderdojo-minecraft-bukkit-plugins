@@ -1,6 +1,6 @@
 defaultTasks 'clean', 'build', 'fatJar'
 
-//prova
+//prova windows
 
 apply plugin: 'java' 
 apply plugin: 'project-report' 
