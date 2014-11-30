@@ -1,15 +1,20 @@
 package it.toto.minecraft.plugin.listener;
 
 import com.google.common.base.Optional;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+
+import java.util.List;
 
 
 /**
@@ -25,30 +30,63 @@ public class BlockPlaceMiniGame implements Listener {
         BlockFace.WEST,
     };
 
+    private final Material[] sequence = new Material[]{
+        Material.SAND,
+        Material.DIRT,
+        Material.WOOD
+    };
+
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent blockPlaceEvent) {
-        log.debug("onBlockPlace {}", ReflectionToStringBuilder.toString(blockPlaceEvent));
+        //log.debug("onBlockPlace {}", ReflectionToStringBuilder.toString(blockPlaceEvent));
         final Block blockPlaced = blockPlaceEvent.getBlockPlaced();
         if (blockPlaced != null) {
             log.info("BlockPlaced {}", blockPlaced);
-            final Location blockPlacedLocation = blockPlaced.getLocation();
-
-            log.debug("north {}", blockPlaced.getRelative(BlockFace.NORTH, 1));
-            log.debug("east {}", blockPlaced.getRelative(BlockFace.EAST, 1));
-            log.debug("south {}", blockPlaced.getRelative(BlockFace.SOUTH, 1));
-            log.debug("west {}", blockPlaced.getRelative(BlockFace.WEST, 1));
 
             final Material blockPlacedType = blockPlaced.getType();
-            if (blockPlacedType == Material.SAND) {
-                //sabbia. Controllo alla sua destra allora
-                //http://jd.bukkit.org/rb/apidocs/src-html/org/bukkit/block/BlockFace.html#line.8
-                
-                Optional<BlockFace> nearestGravelOptional = findNearest(blockPlaced, Material.GRAVEL);
+            if (blockPlacedType == sequence[0]) {
+                Optional<BlockFace> nearestGravelOptional = findNearest(blockPlaced, sequence[1]);
 
                 if (nearestGravelOptional.isPresent()) {
-                    
-                }
 
+                    final BlockFace blockFace = nearestGravelOptional.get();
+
+                    int index = 0;
+
+                    Block block = blockPlaced;
+
+                    List<Block> blocks = Lists.newArrayList();
+
+                    boolean found = true;
+
+                    while (index < sequence.length && found) {
+                        log.info("relative of {} index {} blockface {}", block, index, blockFace);
+                        if (block.getType() != sequence[index]) {
+                            found = false;
+                        } else {
+                            blocks.add(block);
+                        }
+                        index ++;
+                        block = block.getRelative(blockFace, 1);
+                    }
+
+                    if (found) {
+                        log.info("sequence ok !!!!");
+
+                        final Player player = blockPlaceEvent.getPlayer();
+
+                        for (Block b : blocks) {
+                            player.playEffect(b.getLocation(), Effect.MOBSPAWNER_FLAMES, null);
+                            b.setType(Material.AIR);
+                        }
+
+                        player.getServer().broadcastMessage(player.getDisplayName() + " a completato la sequenza !");
+
+                    } else {
+                        log.info("wong sequence of {} index {} blockface {}", block, index, blockFace);
+                    }
+
+                }
             }
         }
     }
