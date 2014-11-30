@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 <configuration debug="true" scan="true" scanPeriod="30 seconds">
 
+    <appender name="FILE-TOTO" class="ch.qos.logback.core.FileAppender">
+        <file>${user.home}/toto.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d %-5level [%t %X{uniq}] %logger{36} - %msg%n</pattern>
@@ -8,11 +16,9 @@
     </appender>
 
     <logger name="org" level="WARN" />
-    <logger name="it" level="DEBUG" />
+    <logger name="it.toto" level="DEBUG">
+        <appender-ref ref="FILE-TOTO" />
+    </logger>
 
-
-    <root level="info" >
-        <appender-ref ref="STDOUT" />
-    </root>
 
 </configuration>
