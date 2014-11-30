@@ -80,7 +80,7 @@ public class BlockPlaceMiniGame implements Listener {
                             b.setType(Material.AIR);
                         }
 
-                        player.getServer().broadcastMessage(player.getDisplayName() + " a completato la sequenza !");
+                        player.getServer().broadcastMessage(player.getDisplayName() + " ha completato la sequenza !");
 
                     } else {
                         log.info("wong sequence of {} index {} blockface {}", block, index, blockFace);
