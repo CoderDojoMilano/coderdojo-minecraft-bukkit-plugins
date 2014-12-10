@@ -8,4 +8,8 @@ commands:
     gerard-hello-world:
         description: Say HELLO !
         usage: /gerard-hello-world
+    name-pig:
+            description: Creates a Pig and Give it a name
+            usage: /name-pig name
+
 version: 0.1
