@@ -1,4 +1,4 @@
-package it.toto.minecraft.plugin.command;
+package it.gerard.minecraft.plugin.command;
 
 import com.google.common.collect.Iterables;
 import lombok.extern.slf4j.Slf4j;
