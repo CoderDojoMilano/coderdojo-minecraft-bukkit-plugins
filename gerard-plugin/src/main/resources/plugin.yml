@@ -11,5 +11,8 @@ commands:
     name-pig:
             description: Creates a Pig and Give it a name
             usage: /name-pig name
+    name-spider:
+            description: Creates a Spider and Give it a name
+            usage: /name-spider name
 
 version: 0.1
