@@ -14,5 +14,8 @@ commands:
     name-spider:
             description: Creates a Spider and Give it a name
             usage: /name-spider name
+    name-wolf:
+            description: Creates a Spider and Give it a name
+            usage: /name-wolf name
 
 version: 0.1
