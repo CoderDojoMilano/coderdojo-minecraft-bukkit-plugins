@@ -35,4 +35,7 @@ public class PlayerRepository {
         return info;
     }
 
+    public boolean isNotEmpty() {
+        return !players.isEmpty();
+    }
 }
