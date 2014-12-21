@@ -8,6 +8,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
 import it.toto.minecraft.plugin.command.CommandExecution;
+import it.toto.minecraft.plugin.listener.AwsJenkinsClient;
 import it.toto.minecraft.plugin.listener.BlockPlaceMiniGame;
 import it.toto.minecraft.plugin.tabComplete.OnTabComplete;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +38,10 @@ public class CoderDojoPlugin extends JavaPlugin {
 
     public void onEnable() {
         getServer().getPluginManager().registerEvents(injector.getInstance(BlockPlaceMiniGame.class), this);
-        log.info("listener on events ");
+        getServer().getPluginManager().registerEvents(injector.getInstance(AwsJenkinsClient.class), this);
+
+        final AwsJenkinsPush awsJenkinsPush = injector.getInstance(AwsJenkinsPush.class);
+        awsJenkinsPush.runTaskTimerAsynchronously(this, 20, 1200); //1 secondo, 1 minuto
     }
 
     public void onDisable() {
