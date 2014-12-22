@@ -20,9 +20,9 @@ commands:
     name-sheep:
             description: Creates a Sheep and Give it a name
             usage: /name-sheep name
-    buildahouse:
+    build-a-house:
             description: Creates a 10x5 glass house
-            usage: /buildahouse
+            usage: /build-a-house
 
 
 version: 0.1

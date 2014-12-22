@@ -26,7 +26,7 @@ import org.bukkit.block.Block;
 // to make a 3D block.
 //
 
-public class BuildAHouse extends JavaPlugin {
+public class BuildAHouse implements CommandExecution {
   public static Logger log = Logger.getLogger("Minecraft");
   public void onEnable() {
     log.info("[BuildAHouse] Start up.");
@@ -111,19 +111,18 @@ public class BuildAHouse extends JavaPlugin {
     origin.setX(origin.getX() + width);
   }
 
-  public boolean onCommand(CommandSender sender, Command command, 
-                           String commandLabel, String[] args) {         
-    if (commandLabel.equalsIgnoreCase("buildahouse")) {
-      if (sender instanceof Player) { 
-        Player me = (Player)sender;
-        // Put your code after this line:
-        origin = me.getLocation();
-        firstHouse = true;
-        MyHouse.build_me();
-        // ...and finish your code before this line.
-        return true;
-        }
+  @Override
+  public boolean go(CommandSender sender, Command command, Iterable<String> args) {
+    if (sender instanceof Player) {
+      Player me = (Player)sender;
+      // Put your code after this line:
+      origin = me.getLocation();
+      firstHouse = true;
+      MyHouse.build_me();
+      // ...and finish your code before this line.
+      return true;
+    } else {
+      return false;
     }
-    return false;
   }
 }
