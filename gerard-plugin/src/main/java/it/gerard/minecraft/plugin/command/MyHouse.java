@@ -6,14 +6,14 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/ahmine for more book information.
 ***/
-package it.gerard.minecraft.plugin.command;
-
+package buildahouse;
 public class MyHouse {
   public static void build_me() {
    int width;
-   width = 10;
+   width = 3;
    int height;
-   height = 5;
-    BuildAHouse.buildMyHouse(width, height);
+   height = 50;
+   for (int build=0; build < 20; build++) {	
+     BuildAHouse.buildMyHouse(width, height);}
   }
 }
