@@ -2,7 +2,8 @@
 
 #LOCATION=$(dirname "$(readlink -fn "$0")")  
 #LOCATION=$(dirname "$0")
-LOCATION=$HOME/crafbukkit
+#LOCATION=$HOME/crafbukkit
+LOCATION=/etc/craftbukkit
 
 cd "$LOCATION"  
 
@@ -45,7 +46,6 @@ case "$1" in
         sleep 1
         screen -x minecraft
         ;;
- 
 'view')
         screen -x minecraft
         ;;
@@ -65,3 +65,4 @@ case "$1" in
         ;;
 esac
 exit 0
+

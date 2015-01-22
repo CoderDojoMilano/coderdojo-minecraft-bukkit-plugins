@@ -2,9 +2,9 @@
 
 set -e
 
-export JAVA_HOME=/home/ubuntu/jdk1.8.0_25
-cd /home/ubuntu/coderdojo-minecraft-bukkit-plugins
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+cd /root/coderdojo-minecraft-bukkit-plugins
 git pull
-/home/ubuntu/crafbukkit/server.sh stop
-./build-and-deploy-plugins.sh /home/ubuntu/crafbukkit
-/home/ubuntu/crafbukkit/server.sh start
+/etc/init.d/craftbukkit stop
+./build-and-deploy-plugins.sh /etc/craftbukkit
+/etc/init.d/craftbukkit start
