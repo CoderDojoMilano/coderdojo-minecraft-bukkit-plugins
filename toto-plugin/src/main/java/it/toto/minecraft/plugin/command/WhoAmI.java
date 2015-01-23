@@ -29,7 +29,7 @@ public class WhoAmI implements CommandExecution {
             if (!grounded) {
                 groundMsg = "not "; //(1)
             }
-            me.sendMessage("PROVA 3 !!! Your experience points are " + exp +
+            me.sendMessage("PROVA 4 !!! Your experience points are " + exp +
                             ", food is " + food +
                             "\nwater falls from the sky "
                             + "and you are " + groundMsg + "on the ground."
