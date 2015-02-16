@@ -1,0 +1,38 @@
+defaultTasks 'clean', 'build', 'fatJar'
+
+apply plugin: 'java' 
+apply plugin: 'project-report' 
+
+group = 'it.ludovico.bukkit-hello-world'
+version = '0.0.1-SNAPSHOT'
+description = "Ludovico CoderDojo plugin"
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.bukkit.org/content/groups/public/" }
+    maven { url "https://oss.sonatype.org/content/repositories/public/" }
+}
+
+// This server is running CraftBukkit version git-Bukkit-1.7.9-R0.2-24-g07d4558-b3116jnks (MC: 1.7.10) (Implementing API version 1.7.10-R0.1-SNAPSHOT)
+dependencies {
+    compile 'org.bukkit:bukkit:1.7.9-R0.2'
+    compile 'org.projectlombok:lombok:1.14.8'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.google.inject:guice:3.0'
+}
+
+task fatJar(type: Jar) {
+    exclude 'org/bukkit/**'
+    baseName = project.name + '-bukkit-plugin'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

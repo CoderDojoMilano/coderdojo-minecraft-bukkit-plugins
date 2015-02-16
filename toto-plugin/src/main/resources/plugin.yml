@@ -24,4 +24,7 @@ commands:
     flying-creeper:
         description: Spawn a Flying Creeper
         usage: /flying-creeper
+    give-item:
+        description: Give an Item to the Player
+        usage: /give-item
 version: 0.1

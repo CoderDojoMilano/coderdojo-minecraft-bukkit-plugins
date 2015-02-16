@@ -1,0 +1,12 @@
+name: enzo
+
+author: Enzo
+website: https://github.com/toto-castaldi
+main: it.enzo.minecraft.plugin.CoderDojoPlugin
+
+commands:
+    who-am-i:
+        description: Player info
+        usage: /enzo-who-am-i
+
+version: 0.1
