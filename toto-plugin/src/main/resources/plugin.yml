@@ -27,4 +27,10 @@ commands:
     give-item:
         description: Give an Item to the Player
         usage: /give-item
+    hello-toto:
+            description: Ciao
+            usage: /hello-toto
+    sky-cmd:
+            description: Ciao
+            usage: /sky-cmd
 version: 0.1
